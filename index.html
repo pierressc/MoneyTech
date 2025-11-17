@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Tech</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <h1>Money Tech</h1>
+    </header>
+
+    <main class="container">
+
+        <section id="dashboard">
+            <h2>Resumo</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Receitas</h3>
+                    <p id="total-receitas" class="valor-receita">R$ 0,00</p>
+                </div>
+                <div class="card">
+                    <h3>Despesas</h3>
+                    <p id="total-despesas" class="valor-despesa">R$ 0,00</p>
+                </div>
+                <div class="card saldo">
+                    <h3>Saldo Total</h3>
+                    <p id="saldo-total">R$ 0,00</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="formulario-transacao">
+            <h2>Adicionar Nova Transação</h2>
+            
+            <form id="form-add">
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" id="descricao" placeholder="Ex: Salário" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="valor">Valor</label>
+                    <input type="number" id="valor" step="0.01" placeholder="0,00" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="data">Data</label>
+                    <input type="date" id="data" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo">Tipo</label>
+                    <select id="tipo" required>
+                        <option value="receita">Receita</option>
+                        <option value="despesa">Despesa</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria">
+                        <option value="Salário">Salário</option>
+                        <option value="Alimentação">Alimentação</option>
+                        <option value="Transporte">Transporte</option>
+                        <option value="Lazer">Lazer</option>
+                        <option value="Contas Fixas">Contas Fixas</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+                <input type="hidden" id="transacao-id">
+
+                <button type="submit">Adicionar</button>
+            </form>
+        </section>
+
+        <section id="historico-transacoes">
+            <h2>Histórico de Lançamentos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th>Categoria</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-transacoes-body">
+                    </tbody>
+            </table>
+        </section>
+
+        <section id="relatorios">
+            <h2>Relatórios</h2>
+            <div class="filtro-container">
+                <label for="filtro-periodo">Filtrar por Período:</label>
+                <input type="month" id="filtro-periodo">
+                <button id="btn-filtrar">Filtrar</button>
+            </div>
+            
+            <div id="area-relatorio-percentual">
+                <h3>Gastos por Categoria (no período)</h3>
+                <ul id="lista-percentual-categoria">
+                    </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Projeto Acadêmico da Disciplina Tecnologia para Front - End com Lógica Imperativa</p>
+    </footer>
+
+</body>
+</html>

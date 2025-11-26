@@ -315,52 +315,6 @@ function gerarRelatorioCategorias(transacoesFiltradas) {
   }
 }
 
-/* --- FUNÇÃO ESPECÍFICA PARA FILTROS NOS RELATÓRIOS --- */
-function aplicarFiltros() {
-  console.log("=== APLICANDO FILTROS APENAS PARA RELATÓRIOS ===");
-
-  const periodoFiltrado = filtroPeriodo.value;
-  const categoriaFiltrada = document.getElementById(
-    "categoria-relatorio"
-  ).value;
-
-  console.log(
-    "Filtros - Período:",
-    periodoFiltrado,
-    "Categoria:",
-    categoriaFiltrada
-  );
-
-  let transacoesFiltradas = [];
-
-  // Aplicar filtros APENAS para relatórios
-  transacoesFiltradas = transacoes.filter(function (transacao) {
-    let passaFiltroPeriodo = true;
-    let passaFiltroCategoria = true;
-
-    if (periodoFiltrado) {
-      passaFiltroPeriodo = transacao.data.startsWith(periodoFiltrado);
-    }
-
-    if (categoriaFiltrada && categoriaFiltrada !== "Todas") {
-      passaFiltroCategoria = transacao.categoria === categoriaFiltrada;
-    }
-
-    return passaFiltroPeriodo && passaFiltroCategoria;
-  });
-
-  console.log(
-    "Transações filtradas para relatórios:",
-    transacoesFiltradas.length
-  );
-
-  // ATUALIZAR APENAS RELATÓRIOS E DASHBOARD com dados filtrados
-  atualizarDashboard(transacoesFiltradas); // Dashboard com dados filtrados
-  gerarRelatorioCategorias(transacoesFiltradas); // Relatório com dados filtrados
-
-  // NÃO atualiza o histórico - ele continua mostrando todas as transações
-}
-
 /* --- FUNÇÃO PARA RENDERIZAR TRANSAÇÕES FILTRADAS --- */
 function renderizarTransacoesFiltradas(transacoesFiltradas) {
   console.log("Renderizando transações filtradas nos relatórios...");
